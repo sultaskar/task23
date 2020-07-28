@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,12 +14,13 @@ public class BasketClass implements Basket {
     }
 
     public void removeProduct(String product) {
-        for (Position g: goods) {
-            if (product.equals(g.product)){
-                goods.remove(g);
+        Iterator<Position> it = goods.iterator();
+        while (it.hasNext()) {
+            Position p = it.next();
+            if (product.equals(p.product)){
+                goods.remove(p);
             }
         }
-
     }
 
     public void updateProductQuantity(String product, int quantity) {
@@ -29,11 +31,9 @@ public class BasketClass implements Basket {
     }
 
     public void clear() {
-        for (Position g: goods) {
-            goods.remove(g);
-        }
-
+        goods.removeAll(goods);
     }
+
 
     public List<String> getProducts() {
         List<String> list = new ArrayList<String>();
