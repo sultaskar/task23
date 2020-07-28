@@ -43,10 +43,11 @@ public class BasketClass implements Basket {
     }
 
     public int getProductQuantity(String product) {
+        int quantity = 0;
         for (Position g : goods)
             if (product.equals(g.product)) {
-                return g.quantity;
+                quantity = g.quantity;
             }
-        else return 0;
+        return quantity;
     }
 }
