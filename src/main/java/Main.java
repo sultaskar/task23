@@ -10,6 +10,8 @@ public class Main {
 
         System.out.println(basket.getProductQuantity("Хлеб"));
 
+        basket.updateProductQuantity("Молоко", 10);
+
         basket.removeProduct("Хлеб");
 
         System.out.println(basket.getProducts());

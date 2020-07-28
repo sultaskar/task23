@@ -1,3 +1,5 @@
+import javafx.geometry.Pos;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -18,16 +20,22 @@ public class BasketClass implements Basket {
         while (it.hasNext()) {
             Position p = it.next();
             if (product.equals(p.product)){
-                goods.remove(p);
+                it.remove();
             }
         }
     }
 
     public void updateProductQuantity(String product, int quantity) {
-       int index = goods.indexOf(product);
-       goods.remove(index);
-       goods.add(index, new Position(product, quantity));
-
+        int index = 0;
+        Iterator<Position> it = goods.iterator();
+        while (it.hasNext()){
+            Position p = it.next();
+            if (product.equals(p.product)){
+                index = goods.indexOf(p);
+                it.remove();
+            }
+        }
+        goods.add(index, new Position(product, quantity));
     }
 
     public void clear() {
